@@ -15,6 +15,8 @@ import "@/styles/phase5.css";
 import "@/styles/phase6.css";
 import "@/styles/phase7.css";
 import "@/styles/pricing.css";
+import "@/styles/social-proof.css";
+import "@/styles/service-preview.css";
 
 const inter = localFont({
   src: "../public/fonts/inter-latin.woff2",

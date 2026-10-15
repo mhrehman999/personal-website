@@ -6,6 +6,7 @@ import { SelectedWork } from "@/components/home/SelectedWork";
 import { HomeProcess } from "@/components/home/HomeProcess";
 import { HomePackages } from "@/components/home/HomePackages";
 import { HomeTestimonials } from "@/components/home/HomeTestimonials";
+import { HomePartners } from "@/components/home/HomePartners";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { HomeClosingCta } from "@/components/home/HomeClosingCta";
 import { HomeCursor } from "@/components/home/HomeCursor";
@@ -27,8 +28,9 @@ export default function HomePage() {
     <ServiceRows />
     <SelectedWork projects={homeProjects} />
     <HomeProcess />
-    <HomePackages />
     <HomeTestimonials />
+    <HomePartners />
+    <HomePackages />
     <HomeFaq />
     <HomeClosingCta />
   </main>;

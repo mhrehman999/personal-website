@@ -4,6 +4,7 @@ export type Service = {
   number: string;
   title: string;
   summary: string;
+  previewImage?: string;
   subServices: { id: string; label: string }[];
   deliverables: string[];
   faqs: ServiceFaq[];
@@ -14,6 +15,7 @@ export const services: Service[] = [
     slug: "branding",
     number: "001",
     title: "Branding",
+    previewImage: "/services/previews/branding.svg",
     summary: "TODO: Add a concise, confirmed description of the branding service.",
     subServices: [
       { id: "logo-design", label: "Logo design" },
@@ -30,6 +32,7 @@ export const services: Service[] = [
     slug: "pitch-deck",
     number: "002",
     title: "Pitch Deck",
+    previewImage: "/services/previews/pitch-deck.svg",
     summary: "TODO: Add a concise, confirmed description of the pitch deck service.",
     subServices: [
       { id: "investor-fundraising", label: "Investor and fundraising" },
@@ -50,6 +53,7 @@ export const services: Service[] = [
     slug: "social-media",
     number: "003",
     title: "Social Media",
+    previewImage: "/services/previews/social-media.svg",
     summary: "TODO: Add a concise, confirmed description of the social media service.",
     subServices: [
       { id: "account-management", label: "Account management" },
@@ -66,6 +70,7 @@ export const services: Service[] = [
     slug: "presentation-design",
     number: "004",
     title: "Presentation Design",
+    previewImage: "/services/previews/presentation-design.svg",
     summary: "TODO: Add a concise, confirmed description of the presentation design service.",
     subServices: [
       { id: "corporate", label: "Corporate" },
