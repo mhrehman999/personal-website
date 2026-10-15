@@ -1,0 +1,12 @@
+{
+  "slug": "placeholder-project-three",
+  "title": "TODO: Project title",
+  "client": "TODO: Client name",
+  "category": "social-media",
+  "year": "TODO",
+  "coverImage": "/work/placeholder-project-three/cover.webp",
+  "coverAlt": "TODO: Add approved descriptive alt text for this project cover.",
+  "galleryImages": [],
+  "summary": "TODO: Add an approved project summary.",
+  "role": "TODO: Add the studio's role."
+}

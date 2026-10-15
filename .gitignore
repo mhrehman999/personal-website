@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.lighthouseci/
+test-results/
+playwright-report/
+.turbo/
+.vercel/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local

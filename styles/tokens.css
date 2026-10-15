@@ -1,0 +1,49 @@
+:root {
+  --bg: #0F0F0F;
+  --line: #353535;
+  --muted: #757575;
+  --accent: #82DB1A;
+  --fg: #FFFFFF;
+  --fg-2: rgb(255 255 255 / 72%);
+  --accent-glow: rgb(130 219 26 / 15%);
+  --surface: rgb(53 53 53 / 35%);
+
+  --font-display: var(--font-inter-tight), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+  --font-accent: var(--font-baskervville), serif;
+
+  --text-display-xl: clamp(3.25rem, 8vw, 10rem);
+  --text-display-l: clamp(2.5rem, 5.5vw, 6rem);
+  --text-h2: clamp(2rem, 4vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 2.5vw, 2rem);
+  --text-body-l: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+
+  --space-1: 4px;
+  --space-base: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+  --space-48: 192px;
+  --section-space: clamp(72px, 12vw, 192px);
+  --container-width: 1440px;
+  --container-gutter: clamp(20px, 4vw, 64px);
+  --grid-columns-desktop: 12;
+  --grid-columns-tablet: 8;
+  --grid-columns-mobile: 4;
+  --grid-gutter: 24px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --radius-input: 16px;
+}
