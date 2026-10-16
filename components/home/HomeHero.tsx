@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { LoadWords } from "@/components/motion/LoadWords";
 import { useMotionPreferences } from "@/components/motion/MotionPreferences";
@@ -8,14 +8,11 @@ import { MagneticLink } from "@/components/home/MagneticLink";
 import { ProjectFolder } from "@/components/home/ProjectFolder";
 
 export function HomeHero() {
-  const [scrolled, setScrolled] = useState(false);
   const { reducedMotion } = useMotionPreferences();
 
   useEffect(() => {
     let context: { revert: () => void } | undefined;
     let cancelled = false;
-    const updateScroll = () => setScrolled(window.scrollY > 16);
-    window.addEventListener("scroll", updateScroll, { passive: true });
 
     void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(([gsapModule, triggerModule]) => {
       if (cancelled) return;
@@ -34,7 +31,7 @@ export function HomeHero() {
       context = { revert: () => media.revert() };
     });
 
-    return () => { cancelled = true; window.removeEventListener("scroll", updateScroll); context?.revert(); };
+    return () => { cancelled = true; context?.revert(); };
   }, [reducedMotion]);
 
   return <section className={`home-hero${reducedMotion ? " is-reduced-motion" : ""}`} aria-labelledby="home-title">
@@ -49,6 +46,6 @@ export function HomeHero() {
     </div>
     <ProjectFolder />
     </div>
-    <a className={`home-scroll-cue${scrolled ? " is-scrolled" : ""}`} href="#home-intro" aria-label="Scroll to introduction"><span>Scroll to explore</span><i aria-hidden="true" /></a>
+    <a className="home-scroll-cue" href="#home-intro" aria-label="Scroll to introduction"><span>Scroll to explore</span><i className="scroll-cue-arrow" aria-hidden="true"><svg viewBox="0 0 24 28" fill="none"><path d="M12 4v18m-6-6 6 6 6-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg></i></a>
   </section>;
 }

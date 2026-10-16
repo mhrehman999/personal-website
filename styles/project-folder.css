@@ -45,11 +45,6 @@
 .project-folder-assembly.is-dragging, .project-folder-assembly.is-dragging .project-folder-handle { cursor: grabbing; }
 .folder-instructions { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 6px 0 0; color: var(--fg-2); font-size: var(--text-label); }
 .folder-instructions svg { width: 22px; height: 16px; color: var(--accent); }
-html.has-custom-cursor .project-folder-handle { cursor: grab; }
-html.has-custom-cursor .project-folder-assembly.is-dragging .project-folder-handle { cursor: grabbing; }
-html.has-custom-cursor:has(.project-folder-handle:hover, .project-folder-assembly.is-dragging, .folder-dialog[open]) .home-cursor { opacity: 0; }
-html.has-custom-cursor .folder-dialog { cursor: auto; }
-html.has-custom-cursor .folder-dialog button, html.has-custom-cursor .folder-dialog a { cursor: pointer; }
 
 .folder-dialog { position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; max-height: none; overflow: auto; overscroll-behavior: contain; border: 0; background: transparent; padding: 0; margin: 0; color: var(--fg); scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 .folder-dialog::backdrop { background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: opacity 180ms ease-out; }

@@ -8,6 +8,7 @@ import { EmailBand } from "@/components/shell/EmailBand";
 import { Footer } from "@/components/shell/Footer";
 import { ScrollProgress } from "@/components/shell/ScrollProgress";
 import { SiteLoader } from "@/components/shell/SiteLoader";
+import { SiteCursor } from "@/components/shell/SiteCursor";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,6 +27,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
       <ScrollProgress />
+      <SiteCursor enabled={entryPhase === "ready"} />
       {entryPhase !== "ready" && <SiteLoader onStart={startEntry} onReveal={revealEntry} onComplete={finishEntry} />}
       <div className={`site-background${lowPower ? " is-low-power" : ""}`} data-entry-phase={entryPhase} inert={menuOpen || entryPhase === "loading" || entryPhase === "revealing"}>
         <Header menuOpen={menuOpen} onMenuOpen={() => setMenuOpen(true)} />

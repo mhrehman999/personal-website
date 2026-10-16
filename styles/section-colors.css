@@ -125,12 +125,6 @@
 .site-header { box-shadow: 0 4px 20px color-mix(in srgb, var(--brand-blue) 7%, transparent); }
 .site-header.is-scrolled { box-shadow: 0 5px 24px color-mix(in srgb, var(--brand-blue) 10%, transparent); }
 
-/* The cursor stays legible when it crosses the section palette boundaries. */
-.home-cursor { --cursor-bg: var(--brand-blue); --cursor-ink: var(--brand-cloud); background-color: var(--cursor-bg); }
-.home-cursor span { color: var(--cursor-ink); }
-html:has(.selected-work:hover, .home-testimonials:hover, .home-partners:hover, .site-footer:hover) .home-cursor { --cursor-bg: var(--brand-cloud); --cursor-ink: var(--brand-black); }
-html:has(.home-closing-cta:hover, .email-band:hover) .home-cursor { --cursor-bg: var(--brand-black); --cursor-ink: var(--brand-cloud); }
-
 /* Only the new seat crossfades; keep the rest of the artwork stable on hover. */
 .partner-scene-complete { clip-path: polygon(82% 30%, 100% 30%, 100% 90%, 73% 90%, 73% 51%, 81% 44%); }
 .home-partners:has(.partner-invite:is(:hover, :focus-visible)) .partner-scene-open { opacity: 1; }

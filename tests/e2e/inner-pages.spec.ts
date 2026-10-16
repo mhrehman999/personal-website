@@ -31,7 +31,7 @@ test("services overview shares previews and child-service enquiry links", async 
   await expect(page.locator("#contact-message")).toHaveValue(/Logo design/);
 });
 
-test("footer uses native cursor, a light transform and clear typography", async ({ page }) => {
+test("footer uses the shared cursor, a light transform and clear typography", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.locator('[data-entry-phase="ready"]')).toBeVisible({ timeout: 15000 });
@@ -39,7 +39,8 @@ test("footer uses native cursor, a light transform and clear typography", async 
   await footer.scrollIntoViewIfNeeded();
   const box = (await footer.boundingBox())!;
   await page.mouse.move(200, box.y + 180);
-  await expect(footer).toHaveCSS("cursor", "auto");
+  await expect(page.locator(".site-cursor")).toHaveAttribute("data-visible", "true");
+  await expect(footer).toHaveCSS("cursor", "none");
   expect(await footer.evaluate((el) => getComputedStyle(el, "::before").backdropFilter)).toBe("none");
   await expect(page.locator(".footer-column h2").first()).toHaveCSS("font-weight", "700");
   await expect(page.locator(".footer-wordmark-filled")).toHaveCSS("stroke", "rgb(255, 255, 255)");

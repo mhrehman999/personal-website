@@ -9,7 +9,6 @@ import { HomeTestimonials } from "@/components/home/HomeTestimonials";
 import { HomePartners } from "@/components/home/HomePartners";
 import { HomeFaq } from "@/components/home/HomeFaq";
 import { HomeClosingCta } from "@/components/home/HomeClosingCta";
-import { HomeCursor } from "@/components/home/HomeCursor";
 import type { Metadata } from "next";
 import { homeProjects } from "@/content/work";
 
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return <main className="home-page" id="home-content">
-    <HomeCursor />
     <HomeHero />
     <KeywordMarquee />
     <IntroStatement />

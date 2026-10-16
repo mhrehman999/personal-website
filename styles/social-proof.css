@@ -24,9 +24,6 @@
 .review-rail:focus-visible { outline-offset: -3px; }
 .review-rail { cursor: grab; user-select: none; }
 .review-rail.is-dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; }
-html.has-custom-cursor .review-rail { cursor: grab; }
-html.has-custom-cursor .review-rail.is-dragging { cursor: grabbing; }
-html.has-custom-cursor:has(.review-rail.is-dragging) .home-cursor { opacity: 0; }
 .review-card { display: flex; min-width: 0; min-height: 420px; flex: 0 0 87%; flex-direction: column; margin: 0; padding: clamp(26px, 3vw, 44px); border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent); border-radius: var(--radius-card); background: var(--surface); scroll-snap-align: start; }
 .review-card { transition: border-color 240ms ease, background-color 240ms ease; }
 @media (hover: hover) and (pointer: fine) {
@@ -88,8 +85,6 @@ html.has-custom-cursor:has(.review-rail.is-dragging) .home-cursor { opacity: 0; 
 .partner-invite:is(:hover, :focus-visible) { width: var(--partner-expanded); border-color: var(--accent); background: var(--accent); color: var(--bg); }
 .partner-invite:is(:hover, :focus-visible) > span { opacity: 1; transition-delay: 70ms; }
 .partner-strip:has(.partner-invite:is(:hover, :focus-visible)) { border-color: color-mix(in srgb, var(--accent) 65%, transparent); }
-html.has-custom-cursor .partner-invite, html.has-custom-cursor .review-controls button { cursor: pointer; }
-html.has-custom-cursor:has(.partner-invite:hover, .review-controls button:hover) .home-cursor { opacity: 0; }
 .home-partners.is-reduced-motion .partner-invite, .home-partners.is-reduced-motion .partner-invite > span, .home-partners.is-reduced-motion .partner-strip { transition: none; }
 @media (max-width: 1023px) {
   .home-partners { grid-template-columns: minmax(0, 1fr); gap: 20px; }

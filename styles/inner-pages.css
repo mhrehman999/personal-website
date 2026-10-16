@@ -109,8 +109,6 @@
 .pricing-explainer dd { margin: 10px 0 0; color: var(--fg-2); line-height: 1.6; }
 
 /* Static frosted sheen over one moving, already-soft light plane. */
-html.has-custom-cursor .site-footer { cursor: auto; }
-html.has-custom-cursor .site-footer :is(a, button) { cursor: pointer; }
 .site-footer::before { -webkit-backdrop-filter: none; backdrop-filter: none; }
 .site-footer .footer-atmosphere i { animation: none; filter: none; }
 .site-footer .footer-glow { inset: -140px -260px; background: radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--brand-sky) 42%, transparent), color-mix(in srgb, var(--brand-blue) 24%, transparent) 32%, transparent 68%), radial-gradient(ellipse at 38% 60%, color-mix(in srgb, var(--brand-orange) 8%, transparent), transparent 55%); filter: none; will-change: transform; }

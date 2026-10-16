@@ -28,6 +28,8 @@ import "@/styles/finishing-touches.css";
 import "@/styles/mobile-polish.css";
 import "@/styles/inner-pages.css";
 import "@/styles/contact.css";
+import "@/styles/booking.css";
+import "@/styles/cursor.css";
 
 const inter = localFont({
   src: "../public/fonts/inter-latin.woff2",

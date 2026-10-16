@@ -26,7 +26,6 @@
 .home-scroll-cue i { position: relative; width: 1px; height: 46px; overflow: hidden; background: var(--line); }
 .home-scroll-cue i::after { position: absolute; top: 0; left: 0; width: 1px; height: 18px; transform: translateY(-100%); background: var(--accent); animation: scroll-cue-travel 1.1s cubic-bezier(0.65, 0, 0.35, 1) infinite; content: ""; }
 @keyframes scroll-cue-travel { to { transform: translateY(46px); } }
-.home-scroll-cue.is-scrolled { opacity: 0; pointer-events: none; }
 .home-hero.is-reduced-motion .home-scroll-cue i::after { animation: none; }
 .keyword-marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--surface-soft); }
 .keyword-marquee-track { display: flex; width: max-content; }
@@ -146,15 +145,6 @@
 .closing-cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
 .closing-cta-actions .button { min-height: 56px; }
 .closing-cta-actions .button-secondary svg { width: 20px; height: 20px; }
-.home-cursor { position: fixed; z-index: 100; top: 0; left: 0; width: 8px; height: 8px; display: grid; place-items: center; border-radius: 50%; background: var(--accent); opacity: 0; pointer-events: none; transform: translate3d(-100px, -100px, 0); transition: width 200ms cubic-bezier(0.16, 1, 0.3, 1), height 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms cubic-bezier(0.16, 1, 0.3, 1), border-radius 200ms cubic-bezier(0.16, 1, 0.3, 1); }
-.home-cursor { translate: -50% -50%; }
-.home-cursor.is-visible { opacity: 1; }
-.home-cursor.is-active { width: 36px; height: 36px; }
-.home-cursor.is-view { width: 72px; height: 72px; }
-.home-cursor span { color: var(--bg); font-size: var(--text-label); opacity: 0; white-space: nowrap; }
-.home-cursor.is-view span { opacity: 1; }
-html.has-custom-cursor, html.has-custom-cursor body, html.has-custom-cursor a, html.has-custom-cursor button { cursor: none; }
-html.has-custom-cursor input, html.has-custom-cursor textarea, html.has-custom-cursor select, html.has-custom-cursor [contenteditable="true"] { cursor: auto; }
 
 @media (min-width: 1024px) and (hover: hover) and (pointer: fine) { .work-rail-viewport { overflow: hidden; } .work-rail { padding-right: var(--container-gutter); } }
 @media (max-width: 1023px) {
