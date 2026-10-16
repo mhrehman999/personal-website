@@ -12,8 +12,10 @@ export function HomeCursor() {
     const element = cursor.current;
     document.documentElement.classList.add("has-custom-cursor");
     let frame = 0;
+    let nativeCursor = false;
     const move = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") return;
+      if (nativeCursor) { element.classList.remove("is-visible"); return; }
       element.classList.add("is-visible");
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => { element.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`; });
@@ -21,6 +23,8 @@ export function HomeCursor() {
     const updateTarget = (event: PointerEvent) => {
       const target = event.target;
       if (!(target instanceof Element)) return;
+      nativeCursor = Boolean(target.closest(".site-footer"));
+      if (nativeCursor) { cancelAnimationFrame(frame); element.classList.remove("is-visible"); }
       const interactive = target.closest("a, button, [role=button], input, textarea, select");
       const project = target.closest(".project-card");
       element.classList.toggle("is-active", Boolean(interactive));

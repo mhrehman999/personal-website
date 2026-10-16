@@ -1,11 +1,10 @@
-// TODO: Replace all marked copy with approved studio information.
 export const aboutContent = {
-  story: "TODO: Add the approved story for MH Rehman.",
-  principlesHeading: "How we work",
+  story: "I'm Muhammad Haris Rehman, a designer working across brand identity, pitch decks, presentations and social media. I help businesses bring their ideas into one clear visual system, so the work feels consistent, considered and distinctly their own.",
+  principlesHeading: "The thinking behind the work.",
   principles: [
-    { title: "TODO: Principle one", description: "TODO: Add an approved description." },
-    { title: "TODO: Principle two", description: "TODO: Add an approved description." },
-    { title: "TODO: Principle three", description: "TODO: Add an approved description." },
+    { title: "Clarity comes first.", description: "Before the colours and layouts, we get clear on the message. What should people understand, feel or do when they see the work?" },
+    { title: "The pieces belong together.", description: "A logo, a deck and a social post should feel connected. I design the details as parts of a visual language your business can keep using." },
+    { title: "The handoff matters.", description: "A good-looking file is only the start. The final work should be organised, practical and ready for the places you need it." },
   ],
-  workingStyle: "TODO: Describe the confirmed working style, communication, and handoff.",
+  workingStyle: "You work directly with me, from the first conversation to the final files. We agree a direction, share work at useful points and refine the details together. Clear feedback and a shared brief keep the project moving with purpose.",
 };

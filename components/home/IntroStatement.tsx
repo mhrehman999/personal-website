@@ -11,6 +11,7 @@ export function IntroStatement() {
   const { reducedMotion } = useMotionPreferences();
 
   useEffect(() => {
+    if (reducedMotion) return;
     let cancelled = false;
     let context: { revert: () => void } | undefined;
     void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(([gsapModule, triggerModule]) => {
@@ -19,15 +20,17 @@ export function IntroStatement() {
       const { ScrollTrigger } = triggerModule;
       gsap.registerPlugin(ScrollTrigger);
       const spans = ref.current.querySelectorAll<HTMLElement>("[data-intro-word]");
-      if (reducedMotion) { gsap.set(spans, { color: "var(--fg)" }); return; }
+      const colors = getComputedStyle(ref.current);
+      const foreground = colors.getPropertyValue("--fg").trim();
+      const accent = colors.getPropertyValue("--accent").trim();
       const media = gsap.matchMedia();
       media.add("(min-width: 0px)", () => {
-        gsap.fromTo(spans, { color: "var(--muted)" }, { color: "var(--fg)", stagger: 0.035, ease: "none", scrollTrigger: { trigger: ref.current, start: "top 80%", end: "bottom 45%", scrub: true } });
+        gsap.fromTo(spans, { color: foreground }, { color: accent, duration: .45, stagger: .035, ease: "none", scrollTrigger: { trigger: ref.current, start: "top 80%", end: "bottom 45%", scrub: .35 } });
       });
       context = { revert: () => media.revert() };
     });
     return () => { cancelled = true; context?.revert(); };
   }, [reducedMotion]);
 
-  return <section className="home-intro section-wrap" id="home-intro" aria-labelledby="home-intro-title"><p className="eyebrow">The right work changes what&apos;s possible</p><h2 className="visually-hidden" id="home-intro-title">A point of view on design</h2><p className="home-intro-statement" ref={ref} aria-label={introStatement}>{words.map((word, index) => <span key={`${word}-${index}`} data-intro-word>{word}{index < words.length - 1 ? " " : ""}</span>)}</p></section>;
+  return <section className={`home-intro section-wrap${reducedMotion ? " is-reduced-motion" : ""}`} id="home-intro" aria-label="About the studio"><div className="intro-flow" aria-hidden="true"><i /><i /><i /></div><p className="home-intro-statement" ref={ref} aria-label={introStatement}>{words.map((word, index) => <span key={`${word}-${index}`} data-intro-word>{word}{index < words.length - 1 ? " " : ""}</span>)}</p></section>;
 }

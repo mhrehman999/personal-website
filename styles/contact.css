@@ -1,0 +1,55 @@
+/* Contact controls use explicit colours in every state, including the portal menu. */
+.contact-page { --button-primary-bg: var(--brand-orange); --button-primary-ink: var(--brand-black); --button-hover-bg: var(--brand-blue); --button-hover-ink: var(--brand-cloud); }
+.contact-main .field-label { margin-bottom: 8px; color: var(--brand-black); font-weight: 500; }
+.contact-main .field-label span { color: var(--brand-blue); }
+.contact-main .form-control { min-height: 52px; border-color: color-mix(in srgb, var(--brand-blue) 80%, transparent); background: var(--brand-cloud); color: var(--brand-black); caret-color: var(--brand-blue); transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.contact-main .form-control:focus { border-color: var(--brand-blue); outline: 2px solid var(--brand-blue); outline-offset: 3px; background: color-mix(in srgb, var(--brand-cloud) 94%, white); }
+.contact-main .form-control[aria-invalid="true"] { border-color: var(--brand-blue); box-shadow: inset 3px 0 0 var(--brand-blue); }
+.contact-main .field-error { margin-top: 10px; line-height: 1.5; }
+.contact-main .form-control:autofill { background: var(--brand-cloud); color: var(--brand-black); }
+.contact-main .form-control:-webkit-autofill { -webkit-text-fill-color: var(--brand-black); box-shadow: inset 0 0 0 1000px var(--brand-cloud); }
+.contact-select-trigger { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; cursor: pointer; }
+.contact-select-trigger > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.contact-select-trigger svg { display: block; width: 18px; height: 18px; color: var(--brand-blue); transition: transform 180ms ease; }
+.contact-select-trigger[data-state="open"] { border-color: var(--brand-blue); outline: 2px solid var(--brand-blue); outline-offset: 3px; }
+.contact-select-trigger[data-state="open"] svg { transform: rotate(180deg); }
+.contact-service-menu { z-index: 100; min-width: var(--radix-select-trigger-width); max-width: calc(100vw - 32px); max-height: min(320px, var(--radix-select-content-available-height)); overflow: hidden; padding: 6px; border: 1px solid var(--brand-blue); border-radius: 14px; background: var(--brand-cloud); color: var(--brand-black); color-scheme: light; box-shadow: 0 16px 40px rgb(7 7 7 / .18); transform-origin: var(--radix-select-content-transform-origin); animation: contact-menu-in 160ms cubic-bezier(.16, 1, .3, 1); }
+.contact-service-option { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; padding: 10px 12px; border-radius: 8px; outline: none; color: var(--brand-black); font-size: 1rem; line-height: 1.4; user-select: none; cursor: pointer; transition: color 140ms ease, background-color 140ms ease; }
+.contact-service-option[data-state="checked"] { background: var(--brand-blue); color: var(--brand-cloud); }
+.contact-service-option[data-highlighted] { background: var(--brand-orange); color: var(--brand-black); }
+.contact-service-option svg { display: block; width: 18px; height: 18px; }
+.contact-service-option > span { color: inherit; }
+.contact-main .selection-chip { max-width: 100%; min-height: 48px; padding: 4px 4px 4px 14px; border-color: color-mix(in srgb, var(--brand-blue) 60%, transparent); background: var(--brand-cloud); color: var(--brand-blue); font-size: .8125rem; line-height: 1.5; }
+.contact-main .selection-chip button { flex-shrink: 0; width: 44px; height: 44px; color: var(--brand-blue); transition: background-color 180ms ease, color 180ms ease; }
+.contact-page :is(a, button):focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 4px; }
+.contact-aside a { padding: 12px; margin-inline: -12px; border-radius: 10px; color: var(--brand-cloud); transition: background-color 180ms ease, color 180ms ease; }
+.contact-aside .text-link { min-height: 44px; padding-block: 12px; }
+.contact-aside a span { transition: color 180ms ease; }
+.contact-aside a:focus-visible { outline-color: var(--brand-cloud); }
+.contact-page .contact-submit-row .button:disabled { background: var(--brand-cloud); color: var(--brand-blue); border-color: var(--brand-blue); opacity: 1; cursor: not-allowed; }
+.contact-page .contact-submit-row .button[aria-busy="true"] { cursor: wait; }
+.contact-page .contact-submit-row .button:disabled .button-icon { background: var(--brand-blue); color: var(--brand-cloud); }
+.contact-page .contact-submit-row .button-spinner { border-color: var(--brand-cloud); border-top-color: var(--brand-blue); background: transparent; }
+.contact-protection-status { margin: 14px 0 0; color: var(--brand-blue); font-size: .8125rem; line-height: 1.5; }
+.contact-main .form-server-error { padding: 16px; border-color: var(--brand-blue); background: var(--brand-cloud); color: var(--brand-black); line-height: 1.6; }
+.contact-main .form-server-error a { display: inline-block; padding: 8px 4px; color: var(--brand-blue); text-decoration: underline; text-underline-offset: 4px; }
+@keyframes contact-menu-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+@media (hover: hover) and (pointer: fine) {
+  .contact-main .form-control:hover { border-color: var(--brand-blue); background: color-mix(in srgb, var(--brand-cloud) 94%, white); }
+  .contact-aside a:hover, .contact-aside a:hover span, .contact-aside .text-link:hover { background-color: var(--brand-orange); color: var(--brand-black); }
+  .contact-main .selection-chip button:hover { background: var(--brand-orange); color: var(--brand-black); }
+  .contact-main .form-server-error a:hover { background: var(--brand-orange); color: var(--brand-black); }
+}
+@media (max-width: 767px) {
+  .contact-main .selection-chip { border-radius: 16px; }
+  .contact-submit-row .button { max-width: 100%; }
+}
+@media (max-width: 380px) {
+  .contact-page .contact-email { font-size: 1rem; gap: 10px; }
+  .contact-submit-row .button { width: 100%; justify-content: space-between; gap: 10px; padding: 10px 12px 10px 16px; font-size: .8125rem; }
+  .contact-submit-row .button > span:first-child { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-service-menu { animation: none; }
+  .contact-main .form-control, .contact-main .selection-chip button, .contact-aside a, .contact-aside a span, .contact-service-option, .contact-select-trigger svg { transition: none; }
+}

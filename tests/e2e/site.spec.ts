@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/services", "/services/branding", "/work", "/work/placeholder-project-one", "/pricing", "/about", "/contact", "/book-consultation", "/privacy"];
+const routes = ["/", "/services", "/services/branding", "/work", "/work/velova", "/pricing", "/about", "/contact", "/book-consultation", "/privacy"];
 
 test("public pages render, expose one h1 and include a canonical URL", async ({ page }) => {
   test.setTimeout(120_000);
@@ -28,7 +28,7 @@ test("robots and sitemap are served", async ({ request }) => {
   const sitemap = await request.get("/sitemap.xml");
   expect(robots.ok()).toBeTruthy();
   expect(sitemap.ok()).toBeTruthy();
-  expect(await sitemap.text()).toContain("/work/placeholder-project-one");
+  expect(await sitemap.text()).toContain("/work/velova");
 });
 
 test("security headers include nonce based CSP and HSTS", async ({ request }) => {

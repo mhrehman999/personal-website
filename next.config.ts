@@ -7,6 +7,7 @@ const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
 ];
 const nextConfig: NextConfig = {
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
   async headers() { return [{ source: "/(.*)", headers: securityHeaders }]; },

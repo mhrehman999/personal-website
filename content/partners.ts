@@ -1,15 +1,16 @@
 export type Partner = {
   name: string;
-  mark: "ribbon" | "orbit" | "monogram" | "spark";
-  logoSrc?: string;
+  mark?: "ribbon" | "orbit" | "monogram" | "spark";
+  logoSrc: string;
+  logoWidth: number;
+  logoHeight: number;
+  surface: "dark" | "light";
 };
 
-// Replace the labelled examples with approved partner names and logo paths.
-export const partners: Partner[] = [];
-
-export const samplePartners: Partner[] = [
-  { name: "Sample partner 01", mark: "ribbon" },
-  { name: "Sample partner 02", mark: "orbit" },
-  { name: "Sample partner 03", mark: "monogram" },
-  { name: "Sample partner 04", mark: "spark" },
+export const partners: Partner[] = [
+  { name: "Al Rajhi Bank", logoSrc: "/partners/al-rajhi.png", logoWidth: 128, logoHeight: 128, surface: "dark" },
+  { name: "Aon", logoSrc: "/partners/aon.png", logoWidth: 1589, logoHeight: 601, surface: "dark" },
+  { name: "Accenture", logoSrc: "/partners/accenture.png", logoWidth: 128, logoHeight: 128, surface: "dark" },
+  { name: "AT&T", logoSrc: "/partners/att.png", logoWidth: 128, logoHeight: 128, surface: "dark" },
+  { name: "ASUS", logoSrc: "/partners/asus.png", logoWidth: 1568, logoHeight: 324, surface: "light" },
 ];

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { brandName, navigation, whatsappNumber } from "@/content/site";
+import { useEffect, useRef, useState } from "react";
+import { brandName, navigation } from "@/content/site";
 import { BrandLogo } from "@/components/shell/BrandLogo";
 
 type Props = { menuOpen: boolean; onMenuOpen: () => void };
@@ -12,19 +12,30 @@ export function Header({ menuOpen, onMenuOpen }: Props) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [lowPower, setLowPower] = useState(false);
+  const [overDark, setOverDark] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setLowPower(window.navigator.hardwareConcurrency <= 4);
-    const onScroll = () => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
       setScrolled(window.scrollY > 40);
+      const bounds = headerRef.current?.getBoundingClientRect();
+      if (!bounds) return;
+      // Read the surface immediately beneath the floating glass, not the header itself.
+      const surface = document.elementFromPoint(window.innerWidth / 2, bounds.bottom + 2);
+      setOverDark(Boolean(surface?.closest(".selected-work, .home-testimonials, .home-partners, .site-footer")));
     };
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update); };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("resize", onScroll); if (frame) cancelAnimationFrame(frame); };
+  }, [pathname]);
 
   return (
-    <header className={`site-header${scrolled ? " is-scrolled" : ""}${lowPower ? " is-low-power" : ""}`}>
+    <header ref={headerRef} className={`site-header${scrolled ? " is-scrolled" : ""}${lowPower ? " is-low-power" : ""}${overDark ? " is-over-dark" : ""}`}>
       <div className="site-header-inner">
         <BrandLogo name={brandName} context="header" />
         <nav className="desktop-nav" aria-label="Main navigation">
@@ -32,7 +43,6 @@ export function Header({ menuOpen, onMenuOpen }: Props) {
         </nav>
         <div className="desktop-actions">
           <Link className="header-cta" href="/contact">Start a project <span aria-hidden="true">↗</span></Link>
-          <a className="header-whatsapp" href={whatsappNumber ? `https://wa.me/${whatsappNumber}` : "/contact"} target={whatsappNumber ? "_blank" : undefined} rel={whatsappNumber ? "noopener noreferrer" : undefined} aria-label={whatsappNumber ? "Chat on WhatsApp" : "Start a project"}><WhatsAppGlyph /></a>
         </div>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={onMenuOpen}>
           <span className={`menu-toggle-lines${menuOpen ? " is-open" : ""}`} aria-hidden="true"><i /><i /></span>

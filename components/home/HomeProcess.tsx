@@ -40,9 +40,9 @@ export function HomeProcess() {
                 <p>{step.description}</p>
               </div>
               {isHandoff && <>
-                <Link className="process-contact-link" href="/book-consultation">
-                  Let’s talk about your project
-                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" strokeWidth="1.5" /></svg>
+                <Link className="button button-primary process-contact-link" href="/book-consultation">
+                  <span>Let’s talk about your project</span><span className="button-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" strokeWidth="1.5" /></svg></span>
                 </Link>
                 <div className="process-handoff-art" aria-hidden="true">
                   <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="88" stroke="currentColor" /><circle cx="100" cy="100" r="63" stroke="currentColor" /><path d="M61 139 139 61M61 61h78v78" stroke="currentColor" strokeWidth="3" /></svg>
@@ -52,7 +52,6 @@ export function HomeProcess() {
           );
         })}
       </ol>
-      <p className="process-footnote"><span aria-hidden="true" />Your vision, shaped together. From start to finish.</p>
     </section>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { SectionAction } from "@/components/ui/SectionAction";
+import { SubservicePanel } from "@/components/pricing/SubservicePanel";
 import { useMemo, useState } from "react";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import * as Select from "@radix-ui/react-select";
@@ -39,10 +41,11 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
     window.location.assign(`/contact?package=one-for-all&items=${encodeURIComponent(items)}`);
   }
 
-  const heading = <div className="home-section-heading"><div><p className="eyebrow">{standalone ? "Flexible ways to work together" : "Ways to work together"}</p><Heading className="home-section-title" id={standalone ? "pricing-heading" : "packages-heading"}>Good work, built around your brief.</Heading></div>{!standalone && <Link className="text-link home-heading-link" href="/pricing">Explore packages <ArrowUpRight aria-hidden="true" /></Link>}</div>;
+  const heading = <div className="home-section-heading"><div><p className="eyebrow">{standalone ? "Flexible ways to work together" : "Ways to work together"}</p><Heading className="home-section-title" id={standalone ? "pricing-heading" : "packages-heading"}>Good work, built around your brief.</Heading></div>{!standalone && <SectionAction className="home-heading-link" href="/pricing">Explore packages</SectionAction>}</div>;
 
-  return <section className={`home-packages section-wrap pricing-section${standalone ? " pricing-standalone" : ""}`} id={standalone ? undefined : "packages"} aria-labelledby={standalone ? "pricing-heading" : "packages-heading"}>
+  return <section className={`home-packages section-wrap pricing-section${standalone ? " pricing-standalone" : ""}`} id={standalone ? "build-brief" : "packages"} aria-labelledby={standalone ? "pricing-heading" : "packages-heading"}>
     {heading}
+    {standalone && <p className="pricing-lede">Choose the design support you need, or start with a conversation. Every quote is shaped around the scope, detail and timing of your project.</p>}
     <div className="package-cards">
       <article className="package-card package-card-featured">
         <div className="package-card-topline"><span className="package-index">01</span><span className="package-kicker">Flexible scope</span><span className="package-recommended"><Sparkles aria-hidden="true" /> Build a brief</span></div>
@@ -76,7 +79,7 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
                 <button className="form-control package-dropdown-trigger" type="button" aria-expanded={subOpen} aria-haspopup="dialog" aria-controls="package-sub-panel" aria-labelledby="package-subservice-label" onClick={() => setSubOpen((open) => !open)}>
                   <span>{serviceSelections ? `${serviceSelections} ${serviceSelections === 1 ? "item" : "items"} selected` : `Select ${activeService.title.toLowerCase()} options`}</span><ChevronDown className={subOpen ? "is-open" : ""} aria-hidden="true" />
                 </button>
-                {subOpen && <><button className="package-sheet-backdrop" type="button" aria-label="Close sub-service options" onClick={() => setSubOpen(false)} /><div className="package-sub-panel" id="package-sub-panel" role="dialog" aria-label={`${activeService.title} sub-services`} onKeyDown={(event) => { if (event.key === "Escape") setSubOpen(false); }} data-lenis-prevent>
+                {subOpen && <SubservicePanel label={`${activeService.title} sub-services`} onClose={() => setSubOpen(false)}>
                   <div className="package-sub-header"><div><span className="eyebrow">Choose from</span><strong>{activeService.title}</strong></div><button type="button" onClick={() => setSubOpen(false)} aria-label="Close options">Close</button></div>
                   <label className="package-search-label" htmlFor="package-sub-filter">Filter options</label><input id="package-sub-filter" className="form-control package-sub-search" type="search" placeholder={`Search ${activeService.title.toLowerCase()} options`} value={filter} onChange={(event) => setFilter(event.target.value)} />
                   <div className="package-sub-options" role="group" aria-label={`${activeService.title} sub-services`}>
@@ -84,7 +87,7 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
                     {visibleSubs.length === 0 && <p className="package-empty-filter">No matching options. Try another search.</p>}
                   </div>
                   <div className="package-sub-footer"><span>{serviceSelections} selected</span><button type="button" onClick={() => setSubOpen(false)}>Done <ArrowRight aria-hidden="true" /></button></div>
-                </div></>}
+                </SubservicePanel>}
               </div>}
             </div>
           </div>
@@ -110,7 +113,7 @@ export function Pricing({ standalone = false }: { standalone?: boolean }) {
         <div className="package-custom-note"><span className="package-custom-note-icon"><Layers3 aria-hidden="true" /></span><span>A conversation first. A clear scope next.</span></div>
         <div className="package-card-bottom">
           <div className="package-price"><span className="package-price-label">Project pricing</span><strong>{priceLabel(pricing.custom)}</strong></div>
-          <Link className="button button-secondary" href="/book-consultation" onClick={() => track("book_call_click")}><span>Book a discovery call</span><span className="package-secondary-arrow" aria-hidden="true"><ArrowUpRight /></span></Link>
+          <Link className="button button-secondary" href="/book-consultation" onClick={() => track("book_call_click")}><span>Book a discovery call</span><span className="button-icon" aria-hidden="true"><ArrowUpRight /></span></Link>
         </div>
       </article>
     </div>

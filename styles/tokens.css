@@ -1,12 +1,33 @@
 :root {
-  --bg: #0F0F0F;
-  --line: #353535;
-  --muted: #757575;
-  --accent: #82DB1A;
-  --fg: #FFFFFF;
-  --fg-2: rgb(255 255 255 / 72%);
-  --accent-glow: rgb(130 219 26 / 15%);
-  --surface: rgb(53 53 53 / 35%);
+  /* Generated from content/palette.json. Run npm run tokens:sync after edits. */
+  /* brand-palette:start */
+  --brand-orange: #F63B05;
+  --brand-cloud: #C8D1D9;
+  --brand-blue: #2B4F9C;
+  --brand-sky: #5085C5;
+  --brand-black: #070707;
+  /* brand-palette:end */
+
+  /* Semantic roles keep the palette consistent across every route. */
+  --bg: var(--brand-cloud);
+  --fg: var(--brand-black);
+  --accent: var(--brand-blue);
+  --signal: var(--brand-orange);
+  --secondary: var(--brand-blue);
+  --support: var(--brand-sky);
+  --on-accent: var(--brand-cloud);
+  --on-secondary: var(--brand-cloud);
+  --on-support: var(--brand-black);
+  --fg-2: color-mix(in srgb, var(--fg) 84%, var(--bg));
+  --muted: color-mix(in srgb, var(--fg) 66%, var(--bg));
+  --line: color-mix(in srgb, var(--fg) 20%, transparent);
+  --accent-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+  --support-glow: color-mix(in srgb, var(--support) 18%, transparent);
+  --surface: color-mix(in srgb, var(--secondary) 4%, var(--bg));
+  --surface-soft: color-mix(in srgb, var(--secondary) 2%, var(--bg));
+  --surface-hover: color-mix(in srgb, var(--secondary) 6%, var(--bg));
+  --surface-art: var(--brand-blue);
+  --shadow-color: var(--brand-black);
 
   --font-display: var(--font-inter-tight), sans-serif;
   --font-body: var(--font-inter), sans-serif;

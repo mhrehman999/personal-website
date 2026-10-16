@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Cal from "@calcom/embed-react";
 import { calLink } from "@/content/site";
+import palette from "@/content/palette.json";
 
 export function CalBookingEmbed() {
   const [loaded, setLoaded] = useState(false);
@@ -13,6 +14,6 @@ export function CalBookingEmbed() {
   if (!calLink) return <div className="booking-placeholder"><p className="eyebrow">Booking link needed</p><p>TODO: Add the Cal.com booking link in the environment settings.</p><a className="button button-secondary" href="mailto:contact@mhrehman.com">Email to arrange a call <span aria-hidden="true">↗</span></a></div>;
   return <div className="booking-embed-shell" data-lenis-prevent>
     {!loaded && <div className="booking-skeleton" role="status" aria-label="Loading booking calendar"><span /><span /><span /><span /></div>}
-    <Cal calLink={calLink} namespace="studio-discovery" style={{ width: "100%", height: "720px", overflow: "scroll" }} config={{ layout: "month_view", theme: "dark", brandColor: "#82DB1A" }} />
+    <Cal calLink={calLink} namespace="studio-discovery" style={{ width: "100%", height: "720px", overflow: "scroll" }} config={{ layout: "month_view", theme: "light", brandColor: palette.blue }} />
   </div>;
 }

@@ -2,24 +2,21 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { partners, samplePartners } from "@/content/partners";
-import { PartnerMark } from "@/components/home/PartnerMark";
+import { partners } from "@/content/partners";
 import { PartnerSculpture } from "@/components/home/PartnerSculpture";
 import { useMotionPreferences } from "@/components/motion/MotionPreferences";
 
 export function HomePartners() {
-  const isSample = partners.length === 0;
-  const items = isSample ? samplePartners : partners;
   const { reducedMotion } = useMotionPreferences();
 
   return <section className={`home-partners section-wrap${reducedMotion ? " is-reduced-motion" : ""}`} id="partners" aria-labelledby="partners-title">
     <div className="partners-copy">
-    <div className="partners-heading"><h2 className="home-section-title" id="partners-title">Better, together.</h2>{isSample && <span className="social-proof-sample">Sample partner marks</span>}</div>
+    <div className="partners-heading"><h2 className="home-section-title" id="partners-title"><span className="partners-title-better">Better,</span>{" "}<span className="partners-title-together">together.</span></h2></div>
     <p className="partners-intro">For ambitious brands, curious founders, and creative teams. There’s room for your next big idea.</p>
     <div className="partner-strip">
-      <ul className="partner-logos" aria-label={isSample ? "Example partner logos" : "Our partners"}>
-        {items.map((partner) => <li className={`partner-logo partner-logo-${partner.mark}`} title={partner.name} key={partner.name}>
-          {partner.logoSrc ? <Image src={partner.logoSrc} alt={partner.name} width={36} height={36} /> : <><PartnerMark mark={partner.mark} /><span className="visually-hidden">{partner.name}</span></>}
+      <ul className="partner-logos" aria-label="Our partners">
+        {partners.map((partner) => <li className={`partner-logo partner-logo-${partner.surface}`} title={partner.name} key={partner.name}>
+          <Image src={partner.logoSrc} alt={partner.name} width={partner.logoWidth} height={partner.logoHeight} sizes="40px" />
         </li>)}
       </ul>
       <span className="partner-divider" aria-hidden="true" />

@@ -17,6 +17,17 @@ import "@/styles/phase7.css";
 import "@/styles/pricing.css";
 import "@/styles/social-proof.css";
 import "@/styles/service-preview.css";
+import "@/styles/project-folder.css";
+import "@/styles/section-colors.css";
+import "@/styles/buttons.css";
+import "@/styles/glass.css";
+import "@/styles/project-media.css";
+import "@/styles/final-polish.css";
+import "@/styles/site-loader.css";
+import "@/styles/finishing-touches.css";
+import "@/styles/mobile-polish.css";
+import "@/styles/inner-pages.css";
+import "@/styles/contact.css";
 
 const inter = localFont({
   src: "../public/fonts/inter-latin.woff2",
@@ -41,6 +52,8 @@ const baskervville = localFont({
   variable: "--font-baskervville",
 });
 
+const anton = localFont({ src: "../public/fonts/anton-regular.ttf", weight: "400", display: "swap", variable: "--font-anton" });
+
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mhrehman.com"),
   title: { default: `${brandName} — Brand & Presentation Studio`, template: `%s | ${brandName}` },
@@ -58,7 +71,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     { "@context": "https://schema.org", "@type": "ProfessionalService", name: brandName, url: process.env.NEXT_PUBLIC_SITE_URL || "https://mhrehman.com", email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@mhrehman.com", description: "Brand identity, pitch decks, social media, and presentation design." },
   ];
   return (
-    <html lang="en" className={`${inter.variable} ${interTight.variable} ${baskervville.variable}`}>
+    <html lang="en" className={`${inter.variable} ${interTight.variable} ${baskervville.variable} ${anton.variable}`}>
       <body>
         <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
         <MotionPreferencesProvider>

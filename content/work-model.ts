@@ -7,6 +7,7 @@ export type WorkProject = {
   category: WorkCategory;
   year: string;
   coverImage: string;
+  coverVideo?: string;
   coverAlt: string;
   galleryImages: string[];
   summary: string;

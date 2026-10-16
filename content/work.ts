@@ -16,6 +16,7 @@ function readProject(fileName: string): WorkProject {
     && isString(data.title) && isString(data.client) && isString(data.category) && categories.has(data.category as WorkCategory)
     && isString(data.year) && isString(data.coverImage) && data.coverImage.startsWith("/work/")
     && isString(data.summary) && isString(data.role)
+    && (data.coverVideo === undefined || (isString(data.coverVideo) && /^\/work\/[a-z0-9-]+\/preview\.mp4$/.test(data.coverVideo)))
     && (data.coverAlt === undefined || isString(data.coverAlt))
     && (data.galleryImages === undefined || (Array.isArray(data.galleryImages) && data.galleryImages.every((image) => isString(image) && image.startsWith("/work/"))));
   if (!valid) throw new Error(`Invalid portfolio project in content/work/${fileName}. Check the required fields and category slug.`);
@@ -35,6 +36,7 @@ function readProject(fileName: string): WorkProject {
     category: data.category as WorkCategory,
     year: data.year as string,
     coverImage,
+    coverVideo: isString(data.coverVideo) ? data.coverVideo : undefined,
     coverAlt: isString(data.coverAlt) && data.coverAlt ? data.coverAlt : `TODO: Add approved alt text for ${data.title as string}.`,
     galleryImages,
     summary: data.summary as string,
@@ -48,4 +50,4 @@ export const workProjects: WorkProject[] = readdirSync(workDirectory)
   .sort((left, right) => left.localeCompare(right))
   .map(readProject);
 
-export const homeProjects = workProjects;
+export const homeProjects = workProjects.filter((project) => project.coverVideo);

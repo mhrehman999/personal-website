@@ -1,0 +1,70 @@
+/* Shared filled, outlined and text-link states. Section themes only change tokens. */
+:root {
+  --button-primary-bg: var(--brand-blue);
+  --button-primary-ink: var(--brand-cloud);
+  --button-hover-bg: var(--brand-black);
+  --button-hover-ink: var(--brand-cloud);
+  --button-outline-ink: var(--brand-blue);
+  --button-outline-border: color-mix(in srgb, var(--brand-blue) 48%, transparent);
+  --button-outline-hover-bg: var(--brand-black);
+  --button-outline-hover-ink: var(--brand-cloud);
+}
+:is(.home-hero, .home-closing-cta, .site-footer) {
+  --button-primary-bg: var(--brand-orange);
+  --button-primary-ink: var(--brand-black);
+}
+:is(.home-testimonials, .home-partners, .package-card-custom) {
+  --button-primary-bg: var(--brand-cloud);
+  --button-primary-ink: var(--brand-blue);
+  --button-hover-bg: var(--brand-black);
+  --button-hover-ink: var(--brand-cloud);
+  --button-outline-ink: var(--brand-cloud);
+  --button-outline-border: color-mix(in srgb, var(--brand-cloud) 55%, transparent);
+  --button-outline-hover-bg: var(--brand-cloud);
+  --button-outline-hover-ink: var(--brand-blue);
+}
+:is(.selected-work, .site-footer) {
+  --button-outline-ink: var(--brand-cloud);
+  --button-outline-border: color-mix(in srgb, var(--brand-cloud) 48%, transparent);
+  --button-outline-hover-bg: var(--brand-cloud);
+  --button-outline-hover-ink: var(--brand-black);
+}
+:is(.home-closing-cta, .email-band) {
+  --button-outline-ink: var(--brand-black);
+  --button-outline-border: color-mix(in srgb, var(--brand-black) 45%, transparent);
+  --button-outline-hover-bg: var(--brand-black);
+  --button-outline-hover-ink: var(--brand-cloud);
+}
+.button, .header-cta { cursor: pointer; transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease; }
+.button.button-primary, .header-cta { background: var(--button-primary-bg); color: var(--button-primary-ink); border-color: var(--button-primary-bg); }
+.button.button-primary:not(:disabled):hover, .header-cta:hover { background: var(--button-hover-bg); color: var(--button-hover-ink); border-color: var(--button-hover-bg); }
+.button.button-primary .button-icon, .header-cta span { background: var(--button-primary-ink); color: var(--button-primary-bg); }
+.button.button-primary:not(:disabled):hover .button-icon, .header-cta:hover span { background: var(--button-hover-ink); color: var(--button-hover-bg); }
+.button.button-secondary { color: var(--button-outline-ink); background: transparent; border-color: var(--button-outline-border); }
+.button.button-secondary:hover { background: var(--button-outline-hover-bg); color: var(--button-outline-hover-ink); border-color: var(--button-outline-hover-bg); }
+.button.button-secondary .button-icon { background: var(--button-outline-ink); color: var(--bg); }
+.button.button-secondary:hover .button-icon { background: var(--button-outline-hover-ink); color: var(--button-outline-hover-bg); }
+.button .button-icon, .header-cta span { flex-shrink: 0; transition: color 180ms ease, background-color 180ms ease; }
+.button-small { min-height: 44px; padding: 6px 16px; gap: 14px; font-size: var(--text-small); }
+.button-small svg { width: 16px; height: 16px; }
+.button.button-primary:disabled { background: color-mix(in srgb, var(--brand-black) 12%, var(--brand-cloud)); border-color: color-mix(in srgb, var(--brand-black) 22%, var(--brand-cloud)); color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-cloud)); opacity: 1; filter: none; cursor: not-allowed; }
+.button.button-primary:disabled .button-icon { background: color-mix(in srgb, var(--brand-black) 8%, var(--brand-cloud)); color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-cloud)); }
+.package-continue-wrap { min-width: 0; max-width: 100%; }
+.package-card-bottom .button { min-width: 0; max-width: 100%; }
+.text-link { color: var(--accent); text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
+.text-link:hover { text-decoration-color: currentColor; }
+.email-copy-button, .email-write-button { color: var(--button-outline-ink); border-color: var(--button-outline-border); transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.email-copy-button:hover, .email-write-button:hover { background: var(--button-outline-hover-bg); color: var(--button-outline-hover-ink); border-color: var(--button-outline-hover-bg); }
+.back-to-top { color: var(--brand-cloud); background: transparent; transition: color 180ms ease, background-color 180ms ease; }
+.back-to-top:hover { color: var(--brand-black); background: var(--brand-cloud); }
+.back-to-top:hover .back-to-top-progress { stroke: var(--brand-black); }
+.header-whatsapp:hover { color: var(--brand-cloud); background: var(--brand-black); border-color: var(--brand-black); }
+.review-controls button { color: var(--button-outline-ink); border-color: var(--button-outline-border); }
+.review-controls button:not(:disabled):hover { background: var(--button-outline-hover-bg); color: var(--button-outline-hover-ink); border-color: var(--button-outline-hover-bg); }
+@media (max-width: 380px) {
+  .package-card-bottom .button { gap: 8px; font-size: .8125rem; }
+  .package-card .button-primary { padding-left: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button, .header-cta, .button .button-icon, .email-copy-button, .email-write-button, .back-to-top { transition-duration: .01ms; }
+}

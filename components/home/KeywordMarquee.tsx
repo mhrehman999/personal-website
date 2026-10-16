@@ -23,12 +23,15 @@ export function KeywordMarquee() {
         let offset = 0;
         let scale = 1;
         let direction = 1;
-        let paused = false;
+        let cycleWidth = 0;
+        const measure = () => { cycleWidth = (track.current?.firstElementChild as HTMLElement | null)?.offsetWidth ?? 0; };
+        measure();
+        const resize = new ResizeObserver(measure);
+        if (track.current) resize.observe(track.current.firstElementChild!);
         const tick = (_time: number, delta: number) => {
-          const halfWidth = (track.current?.scrollWidth ?? 0) / 2;
-          if (!halfWidth || paused) return;
-          offset = (offset + motionTokens.marquee.speed * scale * direction * delta / 1000) % halfWidth;
-          if (offset < 0) offset += halfWidth;
+          if (!cycleWidth) return;
+          offset = (offset + motionTokens.marquee.speed * scale * direction * delta / 1000) % cycleWidth;
+          if (offset < 0) offset += cycleWidth;
           if (track.current) gsap.set(track.current, { x: -offset });
         };
         gsap.ticker.add(tick);
@@ -36,11 +39,7 @@ export function KeywordMarquee() {
           direction = self.direction || 1;
           scale = Math.min(motionTokens.marquee.maximumSpeed, Math.max(motionTokens.marquee.minimumSpeed, 1 + Math.abs(self.getVelocity()) / 5000));
         } });
-        const pause = () => { paused = true; };
-        const resume = () => { paused = false; };
-        track.current?.addEventListener("pointerenter", pause);
-        track.current?.addEventListener("pointerleave", resume);
-        return () => { scrollTrigger.kill(); gsap.ticker.remove(tick); track.current?.removeEventListener("pointerenter", pause); track.current?.removeEventListener("pointerleave", resume); };
+        return () => { scrollTrigger.kill(); gsap.ticker.remove(tick); resize.disconnect(); };
       });
       context = { revert: () => media.revert() };
     });
@@ -49,6 +48,6 @@ export function KeywordMarquee() {
 
   const keywords = services.map((service) => service.title);
   return <div className={`keyword-marquee${reducedMotion ? " is-static" : ""}`} role="img" aria-label={keywords.join(" plus ")}>
-    <div className="keyword-marquee-track" ref={track} aria-hidden="true">{[0, 1].map((copy) => <div className="keyword-marquee-group" key={copy}>{keywords.map((word, index) => <span className="keyword-marquee-word" key={`${copy}-${word}`}>{word}{index < keywords.length - 1 && <i aria-hidden="true">+</i>}</span>)}</div>)}</div>
+    <div className="keyword-marquee-track" ref={track} aria-hidden="true">{[0, 1].map((copy) => <div className="keyword-marquee-group" key={copy}>{[...keywords, ...keywords].map((word, index) => <span className="keyword-marquee-word" key={`${copy}-${index}`}>{word}<i aria-hidden="true">+</i></span>)}</div>)}</div>
   </div>;
 }

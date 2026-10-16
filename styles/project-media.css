@@ -1,0 +1,27 @@
+.project-media { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--brand-black); }
+.selected-work .project-art:has(.project-media) { height: auto; aspect-ratio: 16 / 9; }
+.selected-work .project-art-inner:has(.project-media) { inset: 0; }
+.project-media > img, .project-media > video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.project-media-contain > img, .project-media-contain > video { object-fit: contain; }
+.project-media-cover > img, .project-media-cover > video { object-fit: cover; }
+.project-media > video { opacity: 0; transition: opacity 180ms ease; pointer-events: none; }
+.project-media.is-playing > video { opacity: 1; }
+.project-media.is-playing > .project-media-fallback { opacity: 0; }
+.project-media-toggle { position: absolute; z-index: 2; right: 16px; bottom: 16px; display: inline-flex; min-height: 38px; align-items: center; gap: 12px; padding: 6px 14px; border: 1px solid color-mix(in srgb, var(--brand-cloud) 45%, transparent); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--brand-black) 78%, transparent); color: var(--brand-cloud); font-size: var(--text-label); cursor: pointer; }
+.project-media-toggle:hover { background: var(--brand-cloud); color: var(--brand-black); }
+.folder-project-button { aspect-ratio: 4 / 5; }
+.folder-card-position { bottom: 22%; }
+.folder-card-position-2 { bottom: 25%; }
+.folder-project-button .project-media { background: var(--brand-cloud); }
+.folder-project-button .project-media > img, .folder-project-button .project-media > video { object-position: center top; }
+.folder-card-layer-4 { z-index: 0; }
+.folder-card-position-4 { width: 54%; bottom: 31%; transform: translateX(-104%) rotate(-5deg); }
+.folder-project-button .project-media-fallback { pointer-events: none; user-select: none; }
+.folder-project-button { position: relative; }
+/* The 16:9 preview occupies 45% of the 4:5 sheet; the still starts below it. */
+.folder-file-insert { position: absolute; z-index: 1; inset: 45% 0 0; display: block; overflow: hidden; background: var(--sheet-color); pointer-events: none; }
+.folder-project-button .folder-file-insert img { height: 100%; object-fit: cover; object-position: center top; }
+.folder-index-image .project-media { height: auto; aspect-ratio: 4 / 3; }
+.folder-index-image .project-media > img { height: 100%; }
+.folder-viewer-media > .project-media { position: absolute; inset: 0; }
+@media (prefers-reduced-motion: reduce) { .project-media > video { transition: none; } }

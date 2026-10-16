@@ -13,7 +13,7 @@
 .service-overview-preview { position: absolute; z-index: -1; top: 18px; right: 8%; color: var(--line); font-family: var(--font-display); font-size: clamp(3rem, 12vw, 9rem); font-weight: 600; letter-spacing: -0.07em; opacity: 0.28; pointer-events: none; }
 .service-detail-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.7fr); gap: clamp(32px, 7vw, 96px); margin-top: 100px; }
 .included-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.included-card, .deliverables-panel, .related-work-card { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-card); background: rgb(53 53 53 / 35%); }
+.included-card, .deliverables-panel, .related-work-card { padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .included-card { min-height: 180px; }
 .included-card h3, .related-work-card h3 { margin: 24px 0 8px; font-family: var(--font-display); font-size: var(--text-h3); letter-spacing: -0.04em; }
 .included-card p, .deliverables-panel p, .related-work-card p { color: var(--fg-2); line-height: 1.6; }
@@ -40,7 +40,7 @@
 .form-control:focus-visible, .form-control:focus { outline: 2px solid var(--accent); outline-offset: 3px; }
 .form-control:disabled, .package-sub-disabled { color: var(--fg-2); opacity: 0.7; cursor: not-allowed; }
 .package-sub-dropdown { position: relative; }
-.package-sub-panel { position: absolute; z-index: 12; top: calc(100% + 8px); right: 0; left: 0; padding: 10px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg); box-shadow: 0 18px 48px rgb(15 15 15 / 55%); animation: package-dropdown-open 200ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.package-sub-panel { position: absolute; z-index: 12; top: calc(100% + 8px); right: 0; left: 0; padding: 10px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg); box-shadow: 0 18px 48px color-mix(in srgb, var(--shadow-color) 55%, transparent); animation: package-dropdown-open 200ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 .package-dropdown-trigger { text-align: left; cursor: pointer; }
 .package-sub-header { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 4px 8px; font-weight: 500; }
 .package-sub-header button { min-width: 44px; min-height: 44px; border: 0; background: transparent; color: var(--accent); cursor: pointer; }
@@ -48,7 +48,7 @@
 .package-sub-panel .form-control { min-height: 44px; }
 .package-sub-options { max-height: 184px; overflow-y: auto; overscroll-behavior: contain; }
 .package-sub-option { min-height: 48px; display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: var(--radius-sm); cursor: pointer; }
-.package-sub-option:hover { background: rgb(255 255 255 / 5%); }
+.package-sub-option:hover { background: color-mix(in srgb, var(--fg) 5%, transparent); }
 .package-checkbox { width: 22px; height: 22px; flex: 0 0 22px; display: grid; place-items: center; border: 1px solid var(--muted); border-radius: var(--radius-sm); background: var(--bg); color: var(--bg); cursor: pointer; }
 .package-checkbox[data-state="checked"] { border-color: var(--accent); background: var(--accent); }
 .package-checkbox-indicator { font-size: 0.875rem; font-weight: 700; }
@@ -81,11 +81,11 @@
 .contact-form-note, .contact-aside-note { color: var(--fg-2); font-size: var(--text-small); line-height: 1.6; }
 .button-spinner { position: relative; border: 2px solid var(--line); border-top-color: var(--bg); border-radius: 50%; animation: button-spin 700ms linear infinite; }
 @keyframes button-spin { to { transform: rotate(360deg); } }
-.contact-success { max-width: 520px; padding: 40px; border: 1px solid var(--line); border-radius: var(--radius-card); background: rgb(53 53 53 / 35%); }
+.contact-success { max-width: 520px; padding: 40px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .contact-success svg { width: 64px; height: 64px; margin-bottom: 24px; color: var(--accent); }
 .contact-success p:not(.eyebrow) { color: var(--fg-2); line-height: 1.6; }
 .contact-success h2 { font-family: var(--font-display); font-size: var(--text-h2); letter-spacing: -0.05em; }
-.contact-aside { align-self: start; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-card); background: rgb(53 53 53 / 35%); }
+.contact-aside { align-self: start; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .contact-aside-link { min-height: 58px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); color: var(--fg); text-decoration: none; }
 .contact-aside-link:hover { color: var(--accent); }
 .contact-aside-note { flex-basis: 100%; }
@@ -94,12 +94,12 @@
 .contact-aside .email-band-actions { flex-wrap: wrap; gap: 8px; }
 .contact-aside .email-copy-button, .contact-aside .email-write-button { min-height: 44px; }
 .booking-page { max-width: 1440px; }
-.booking-embed { position: relative; min-height: 600px; margin-top: 56px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: rgb(53 53 53 / 35%); }
+.booking-embed { position: relative; min-height: 600px; margin-top: 56px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .booking-embed iframe { position: relative; z-index: 1; border: 0; }
 .booking-placeholder { min-height: 320px; display: grid; align-content: center; justify-items: start; gap: 14px; padding: 32px; }
 .booking-placeholder p:not(.eyebrow) { max-width: 520px; color: var(--fg-2); }
 .booking-skeleton { position: absolute; inset: 20px; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 46px; gap: 12px; opacity: 0.45; }
-.booking-skeleton span { border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgb(53 53 53 / 35%); }
+.booking-skeleton span { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
 .booking-fallback, .booking-page-fallback { margin-top: 18px; color: var(--fg-2); }
 .booking-fallback a, .booking-page-fallback a { color: var(--accent); }
 
@@ -123,7 +123,7 @@
   .package-card-bottom { align-items: stretch; }
   .package-card-bottom > .package-continue-wrap { width: 100%; justify-items: stretch; }
   .package-continue-wrap small { max-width: none; text-align: left; }
-  .package-sheet-backdrop { position: fixed; z-index: 79; inset: 0; display: block; width: 100%; height: 100%; border: 0; background: rgb(15 15 15 / 75%); }
+  .package-sheet-backdrop { position: fixed; z-index: 79; inset: 0; display: block; width: 100%; height: 100%; border: 0; background: color-mix(in srgb, var(--shadow-color) 40%, transparent); }
   .package-sub-panel { position: fixed; z-index: 80; inset: auto 0 0; max-height: min(78dvh, 680px); display: flex; flex-direction: column; gap: 10px; padding: 22px var(--container-gutter) max(22px, env(safe-area-inset-bottom)); border: 1px solid var(--line); border-bottom: 0; border-radius: var(--radius-card) var(--radius-card) 0 0; background: var(--bg); animation: package-sheet-rise 400ms cubic-bezier(0.16, 1, 0.3, 1) both; }
   .package-sub-panel .package-sub-options { flex: 1; max-height: none; }
   .contact-layout { grid-template-columns: 1fr; gap: 48px; margin-top: 60px; }

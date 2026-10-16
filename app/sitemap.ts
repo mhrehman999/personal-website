@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...routes.map((route) => ({ url: absoluteUrl(route || "/"), changeFrequency: "monthly" as const, priority: route === "" ? 1 : 0.7 })),
     ...services.map((service) => ({ url: absoluteUrl(`/services/${service.slug}`), changeFrequency: "monthly" as const, priority: 0.6 })),
+    ...services.flatMap((service) => service.subServices.map((sub) => ({ url: absoluteUrl(`/services/${service.slug}/${sub.id}`), changeFrequency: "monthly" as const, priority: 0.5 }))),
     ...workProjects.map((project) => ({ url: absoluteUrl(`/work/${project.slug}`), changeFrequency: "monthly" as const, priority: 0.5 })),
   ];
 }

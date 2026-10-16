@@ -72,11 +72,11 @@ span.accent-word, p.accent-word { color: var(--accent); }
 .token-card { display: flex; min-height: 240px; flex-direction: column; align-items: flex-start; gap: 24px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); padding: clamp(20px, 3vw, 32px); }
 .button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .button { display: inline-flex; min-height: 56px; align-items: center; justify-content: center; gap: 14px; border: 1px solid transparent; border-radius: var(--radius-pill); padding: 8px 10px 8px 22px; font-size: 0.9375rem; font-weight: 500; transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease; }
-.button-primary { background: var(--accent); color: var(--bg); }
+.button-primary { background: var(--accent); color: var(--on-accent); }
 .button-primary:hover { background: var(--fg); }
 .button-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: var(--radius-pill); background: var(--bg); color: var(--accent); font-size: 1.125rem; }
 .button-secondary { border-color: var(--line); color: var(--fg); padding-inline: 22px; }
-.button-secondary:hover { border-color: var(--fg); }
+.button-secondary:hover { border-color: var(--support); background: var(--secondary); color: var(--on-secondary); }
 .component-caption { margin: auto 0 0; color: var(--fg-2); }
 .sample-card { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); padding: 24px; }
 .sample-card-number { color: var(--fg-2); font-size: var(--text-small); font-variant-numeric: tabular-nums; }

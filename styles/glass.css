@@ -1,0 +1,122 @@
+/* Colour fields under glass; text, grid and project interactions stay crisp. */
+.site-header, .site-header.is-scrolled, .site-header.is-low-power {
+  inset: max(20px, env(safe-area-inset-top)) 0 auto;
+  width: min(calc(100% - 48px), 1312px);
+  margin-inline: auto;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.site-header-inner {
+  width: 100%;
+  height: 76px;
+  padding-inline: 24px;
+  gap: 24px;
+  border: 1px solid color-mix(in srgb, var(--brand-cloud) 52%, transparent);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(115deg, color-mix(in srgb, var(--brand-cloud) 22%, transparent), color-mix(in srgb, var(--brand-cloud) 9%, transparent));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--brand-cloud) 72%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--brand-blue) 12%, transparent), 0 10px 32px -14px color-mix(in srgb, var(--brand-black) 25%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(145%);
+  backdrop-filter: blur(28px) saturate(145%);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+.site-header.is-scrolled .site-header-inner {
+  border-color: color-mix(in srgb, var(--brand-cloud) 58%, transparent);
+}
+.site-header { --fg-2: var(--brand-black); }
+.site-header.is-over-dark {
+  --fg: var(--brand-cloud);
+  --fg-2: var(--brand-cloud);
+  --accent: var(--brand-cloud);
+  --line: color-mix(in srgb, var(--brand-cloud) 30%, transparent);
+  --button-primary-bg: var(--brand-cloud);
+  --button-primary-ink: var(--brand-blue);
+  --button-hover-bg: var(--brand-orange);
+  --button-hover-ink: var(--brand-black);
+}
+.site-header.is-over-dark .site-header-inner {
+  background: linear-gradient(115deg, color-mix(in srgb, var(--brand-sky) 8%, transparent), color-mix(in srgb, var(--brand-black) 18%, transparent));
+  border-color: color-mix(in srgb, var(--brand-cloud) 24%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--brand-cloud) 24%, transparent), inset 0 -1px 0 color-mix(in srgb, var(--brand-black) 10%, transparent), 0 10px 32px -14px color-mix(in srgb, var(--brand-black) 30%, transparent);
+}
+.site-header.is-over-dark .brand-logo-image { filter: none; }
+.site-header.is-over-dark .menu-toggle { border-color: color-mix(in srgb, var(--brand-cloud) 30%, transparent); }
+.site-header.is-low-power .site-header-inner { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.site-header .brand-logo-picture { width: 148px; height: 56px; }
+
+.home-hero::before {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 8% 12%, color-mix(in srgb, var(--brand-orange) 10%, transparent), transparent 43%),
+    radial-gradient(ellipse at 78% 28%, color-mix(in srgb, var(--brand-sky) 18%, transparent), transparent 55%),
+    radial-gradient(ellipse at 92% 87%, color-mix(in srgb, var(--brand-blue) 6%, transparent), transparent 48%);
+  content: "";
+  pointer-events: none;
+}
+.home-hero-grid {
+  z-index: -2;
+  background-image: linear-gradient(color-mix(in srgb, var(--brand-blue) 17%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--brand-blue) 17%, transparent) 1px, transparent 1px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.home-hero::after {
+  z-index: -1;
+  inset: 0;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(130deg, color-mix(in srgb, var(--brand-cloud) 30%, transparent), color-mix(in srgb, var(--brand-cloud) 10%, transparent) 54%, color-mix(in srgb, var(--brand-cloud) 35%, transparent));
+  box-shadow: none;
+  /* A shallow frost softens the grid without erasing its one-pixel lines. */
+  -webkit-backdrop-filter: blur(.45px) saturate(110%);
+  backdrop-filter: blur(.45px) saturate(110%);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.home-intro { position: relative; isolation: isolate; }
+.home-intro::before {
+  position: absolute;
+  z-index: -2;
+  inset: 24px 0;
+  border-radius: 36px;
+  background:
+    radial-gradient(ellipse at 12% 78%, color-mix(in srgb, var(--brand-sky) 48%, transparent), transparent 55%),
+    radial-gradient(ellipse at 85% 20%, color-mix(in srgb, var(--brand-blue) 22%, transparent), transparent 55%),
+    radial-gradient(ellipse at 70% 95%, color-mix(in srgb, var(--brand-orange) 15%, transparent), transparent 45%);
+  content: "";
+  pointer-events: none;
+}
+.home-intro::after {
+  position: absolute;
+  z-index: -1;
+  inset: 24px 18px;
+  border: 1px solid color-mix(in srgb, var(--brand-cloud) 92%, transparent);
+  border-radius: 36px;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--brand-cloud) 82%, transparent), color-mix(in srgb, var(--brand-cloud) 76%, transparent));
+  box-shadow: inset 0 1px 0 var(--brand-cloud), inset 0 -1px 0 color-mix(in srgb, var(--brand-blue) 12%, transparent), 0 16px 40px -28px color-mix(in srgb, var(--brand-blue) 20%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(115%);
+  backdrop-filter: blur(24px) saturate(115%);
+  content: "";
+  pointer-events: none;
+}
+
+@media (max-width: 1023px) {
+  .site-header-inner { height: 68px; }
+}
+@media (max-width: 767px) {
+  .site-header, .site-header.is-scrolled, .site-header.is-low-power { inset-block-start: max(12px, env(safe-area-inset-top)); width: calc(100% - 24px); }
+  .site-header-inner { height: 60px; padding-inline: 16px 8px; gap: 16px; -webkit-backdrop-filter: blur(16px) saturate(125%); backdrop-filter: blur(16px) saturate(125%); }
+  .site-header .brand-logo-picture { width: 40px; height: 40px; }
+  .site-header .menu-toggle { width: 44px; height: 44px; border-color: color-mix(in srgb, var(--brand-blue) 24%, transparent); }
+  .home-intro::before { inset: 16px 0; border-radius: 28px; }
+  .home-intro::after { inset: 16px 8px; border-radius: 28px; -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header-inner { background: color-mix(in srgb, var(--brand-cloud) 96%, transparent); }
+  .site-header.is-over-dark .site-header-inner { background: color-mix(in srgb, var(--brand-black) 96%, transparent); }
+  .home-intro::after { background: color-mix(in srgb, var(--brand-cloud) 88%, transparent); }
+}
