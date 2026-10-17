@@ -78,7 +78,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
         <MotionPreferencesProvider>
           <MotionEngine><SiteShell>{children}</SiteShell></MotionEngine>
-          {process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true" && <Analytics />}
+          <Analytics />
         </MotionPreferencesProvider>
       </body>
     </html>
